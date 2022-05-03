@@ -2,8 +2,11 @@ package com.startup.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.startup.dao.VehicleRepo;
@@ -27,10 +30,15 @@ public class BusinessLogic {
 		vehicleRepo.save(vehicle);
 	}
 	
-	public String update()
+	public ResponseEntity<Vehicle> update(int id, Vehicle vehicle)
 	{
-		return "";
-	}
+		Optional<Vehicle> vehicle1=vehicleRepo.findById(id);
+		
+			vehicle=vehicle1.get();
+			vehicle.setModel("New");
+			return new ResponseEntity<>(vehicleRepo.save(vehicle), HttpStatus.OK);
+	}  
+	
 	
 	public void delete(int id)
 	{
