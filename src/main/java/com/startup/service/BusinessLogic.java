@@ -32,8 +32,8 @@ public class BusinessLogic {
 		return "";
 	}
 	
-	public String delete()
+	public void delete(int id)
 	{
-		return "";
+		vehicleRepo.deleteById(id);
 	}
 }
