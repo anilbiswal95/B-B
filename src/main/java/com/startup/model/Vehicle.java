@@ -63,8 +63,4 @@ public class Vehicle {
 		this.color = color;
 	}
 	
-	@Override
-	public String toString() {
-		return "Vehicle [name=" + name + ", model=" + model + ", price=" + price + ", color=" + color + "]";
-	}
 }
