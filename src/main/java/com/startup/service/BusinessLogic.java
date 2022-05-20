@@ -32,11 +32,13 @@ public class BusinessLogic {
 	
 	public ResponseEntity<Vehicle> update(int id, Vehicle vehicle)
 	{
-		Optional<Vehicle> vehicle1=vehicleRepo.findById(id);
-		
-			vehicle=vehicle1.get();
+		Optional<Vehicle> nullCheck=vehicleRepo.findById(id);
+		if (nullCheck.isPresent()) {
+			vehicle=nullCheck.get();
 			vehicle.setModel("New");
-			return new ResponseEntity<>(vehicleRepo.save(vehicle), HttpStatus.OK);
+		}
+		return new ResponseEntity<>(vehicleRepo.save(vehicle), HttpStatus.OK);
+			
 	}  
 	
 	
